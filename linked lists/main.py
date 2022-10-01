@@ -1,10 +1,11 @@
-import linkedlist
+"""
+Example showing use of Turing Machine
+"""
 
+from turingmachine import TuringMachine
 
-l = linkedlist.LinkedList()
-l.add_start(2)
-l.add_end(3)
-l.add_start(4)
-l.print_list()
-l.print_reverse()
-#
+if __name__ == '__main__':
+    tm = TuringMachine({'a, b'}, {'q0', 'q1'}, 'af.txt', ['a','b','b','a'])
+    tm.activate()
+    tm2 = TuringMachine({'a, b'}, {'q0', 'q1'}, 'af.txt', ['a','b','a','a'])
+    tm2.activate()

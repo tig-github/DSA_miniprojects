@@ -212,22 +212,22 @@ class LinkedList:
     def __ge__(self, ll):
         return self.size() >= ll.size()
             
-    def print_list(self):
+    def print_list(self, chain=' -> ', end='None'):
         if not self.head:
             print(None)
         else:
             temp = self.head
             while temp:
-                print(temp.val, end=' -> ')
+                print(temp.val, end=chain)
                 temp = temp.next
-            print('None')
+            print(end)
 
-    def print_reverse(self):
+    def print_reverse(self, chain='<-', end='None'):
         if not self.tail:
             print(None)
         else:
             temp = self.tail
-            print('None', end=' ')
+            print(end, end=' ')
             while temp:
-                print('<-', temp.val, end=' ')
+                print(chain, temp.val, end=' ')
                 temp = temp.prev

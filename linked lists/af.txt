@@ -1,0 +1,11 @@
+# AF in the format of state, symbol, change tuple
+# Must include start state q0, accepting state qacc, rejecting state qrej
+# Alphabet must at least include blank character *
+
+q0 a (q0, a, R)
+q0 b (q1, b, R)
+q0 * (qrej, *, L)
+
+q1 a (q1, a, R)
+q1 b (qacc, b, R)
+q1 * (qrej, *, L)
