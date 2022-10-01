@@ -53,6 +53,9 @@ class TuringMachine:
     def step(self):
         state = self.pointer[1]
         symbol = self.pointer[0].val
+        if state in {'qacc', 'qrej'}: 
+            print('Turing Machine has already computed this input')
+            return
         current_function = self.activation_function[(state, symbol)]
         self.pointer[1] = current_function[0]
         self.pointer[0].val = current_function[1]
