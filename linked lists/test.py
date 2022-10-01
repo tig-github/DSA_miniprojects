@@ -3,6 +3,24 @@ Testing suite for Doubly Linked List
 """
 from linkedlist import LinkedList
 
+def can_get_start_and_end():
+    print('----------------\ncan_get_start_and_end\n----')
+    l = LinkedList()
+    l.add_end(2)
+    l.add_start(1)
+    print(l.get_start(), l.get_end())
+    print('----\nshould print 1 then 2\n----------------')
+    
+def can_get_at():
+    print('----------------\ncan_get_at\n----')
+    l = LinkedList()
+    l.add_start(1)
+    l.add_end(2)
+    l.add_end(3)
+    print(l.get_at(1))
+    print(l.get_at(-2))
+    print('----\nshould print 2 then 2\n----------------')
+
 def can_add_start():
     print('----------------\ncan_add_start\n----')
     l = LinkedList()
@@ -63,6 +81,52 @@ def can_add_at4():
     l.add_at(0, -3)
     l.print_list()
     print('----\nshould print 0 -> 1 -> 2 -> 3 -> None\n----------------')
+    
+def can_remove_start():
+    print('----------------\ncan_remove_start\n----')
+    l = LinkedList()
+    l.add_start(1)
+    l.remove_start()
+    l.print_list()
+    print('----\nshould print None\n----------------')
+    
+def can_remove_end():
+    print('----------------\ncan_remove_end\n----')
+    l = LinkedList()
+    l.add_start(1)
+    l.remove_end()
+    l.print_list()
+    print('----\nshould print None\n----------------')
+    
+def can_remove_at():
+    print('----------------\ncan_remove_end\n----')
+    l = LinkedList()
+    l.add_start(1)
+    l.add_start(2)
+    l.add_start(3)
+    l.remove_at(2)
+    l.print_list()
+    print('----\nshould print 3 -> 2 -> None\n----------------')
+    
+def can_remove_at2():
+    print('----------------\ncan_remove_end2\n----')
+    l = LinkedList()
+    l.add_start(1)
+    l.add_start(2)
+    l.add_start(3)
+    l.remove_at(-2)
+    l.print_list()
+    print('----\nshould print 3 -> 1 -> None\n----------------')
+    
+def can_remove():
+    print('----------------\ncan_remove\n----')
+    l = LinkedList()
+    l.add_start(1)
+    l.add_end(3)
+    l.add_end(7)
+    l.remove(3)
+    l.print_list()
+    print('----\nshould print  1 -> 7 -> None\n----------------')
     
 def can_size():
     print('----------------\ncan_size\n----')
@@ -129,21 +193,78 @@ def can_contains():
     if 1 not in l: print('FALSE')
     print('---\nshould print TRUE then FALSE\n----------------')
     
+def can_getitem():
+    print('----------------\ncan_getitem\n----')
+    l = LinkedList()
+    l.add_end(2)
+    l.add_end(4)
+    l.add_end(6)
+    print(l[1])
+    print('---\nshould print 4\n----------------')
+    
+def can_setitem():
+    print('----------------\ncan_setitem\n----')
+    l = LinkedList()
+    l.add_end(2)
+    l.add_end(4)
+    l.add_end(6)
+    l[1] = 5
+    print(l[1])
+    print('---\nshould print 5\n----------------')
+    
+def can_delitem():
+    print('----------------\ncan_delitem\n----')
+    l = LinkedList()
+    l.add_start(1)
+    del l[0]
+    l.print_list()
+    print('---\nshould print None\n----------------')
+    
+def can_relational():
+    print('----------------\ncan_relational\n----')
+    l1 = LinkedList()
+    l1.add_start(1)
+    l1.add_end(2)
+    l2 = LinkedList()
+    l2.add_start(1)
+    print(l1 > l2)
+    print(l1 < l2)
+    print(l1 == l2)
+    print(l1 != l2)
+    print(l1 >= l2)
+    print(l1 <= l2)
+    print('---\nshould print True, False, False, True, True, False\n----------------')
 
+    
+    
 
 if __name__ == '__main__':
-    # can_add_start()
-    # can_add_end()
-    # can_add_end2()
-    # can_add_at()
-    # can_add_at2()
-    # can_add_at3()
-    # can_add_at4()
-    # can_size()
-    # can_len()
-    # can_bool()
-    # can_add_lists()
-    # can_convert_str()
-    # can_repr()
+    can_get_start_and_end()
+    can_get_at()
+    
+    can_add_start()
+    can_add_end()
+    can_add_end2()
+    can_add_at()
+    can_add_at2()
+    can_add_at3()
+    can_add_at4()
+    
+    can_remove_start()
+    can_remove_end()
+    can_remove_at()
+    can_remove_at2()
+    can_remove()
+    
+    can_size()
+    can_len()
+    can_bool()
+    can_add_lists()
+    can_convert_str()
+    can_repr()
     can_contains()
+    can_getitem()
+    can_setitem()
+    can_delitem()
+    can_relational()
     pass
