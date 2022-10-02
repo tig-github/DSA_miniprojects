@@ -1,7 +1,11 @@
-class Heap {
+const heapify = (arr) =>  {
+    console.log("not implemented");
+}
+
+export class MinHeap {
     constructor(arr = []) {
         this.heap = []
-        if (arr){
+        if (arr.length !== 0){
             this.heap = heapify(arr);
         }
     }
@@ -10,21 +14,25 @@ class Heap {
         return this.heap[0];
     }
 
-    heapPush(val) {
-        
+    heapPush(key) {
+        this.heap.push(key)
+        let i = this.heap.length-1;
+        if (this.heap[Math.floor(i/2)] > key) {
+            let temp = this.heap[Math.floor(i/2)];
+            this.heap[Math.floor(i/2)] = this.heap[i];
+            this.heap[i] = temp;
+        }
+
     }
 
-    heapPop(val) {
+    heapPop() {
+        let i = this.heap.length-1;
+        let temp = this.heap[i];
+        this.heap.pop();        
+    }
+
+    heapPushPop(key) {
 
     }
 
-    heapPushPop(val) {
-
-    }
-
-    heapify(arr) {
-        
-    }
 }
-
-export default Heap
