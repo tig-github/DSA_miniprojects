@@ -7,9 +7,9 @@ from linkedlist import LinkedList
 
 
 # Tape represented as a Doubly Linked List
-# Each listnode value will be a tuple containing the alphabet symbol and state
-# A separate member function will act as the pointer, starting at the head
-# Furthest left node will always be '*' and is initialized as such
+# Each listnode value will contain a symbol from the alphabet
+# A separate class member will act as the pointer, starting at the head
+# Furthest right node will always be '*' and is initialized as such
 # Activation function taken in by file
 class TuringMachine:
     def __init__(self, alpha : set, state : set, af, input : list):
@@ -31,13 +31,11 @@ class TuringMachine:
     def read_af(self, af):
         with open(af) as activation_function:
             function = {}
-            i = 0
             for line in activation_function:
                 if line and line[0] != '#':
                     line = line.split(" ")
                     if line[0] in self.state:
                         function[(line[0],line[1])] = (line[2].strip('(').strip(','), line[3].strip(','), line[4].strip(')'))
-                i += 1
         return function
     
     # preforms all steps in activation function

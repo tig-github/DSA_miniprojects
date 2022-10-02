@@ -8,14 +8,14 @@ States 'qacc', 'qrej', and 'q0' do not have to be directly inputted into the Tur
 from turingmachine import TuringMachine
 
 if __name__ == '__main__':
-    tm = TuringMachine({'a, b'}, {'q0', 'q1'}, 'af.txt', ['b','b','b','b'])
+    tm = TuringMachine({'a, b'}, {'q0', 'q1'}, 'af.txt', ['a','b','b','a'])
     tm.activate()
     tm2 = TuringMachine({'a, b'}, {'q0', 'q1'}, 'af.txt', ['a','b','a','a'])
     tm2.activate()
-    # if it is preferable to see individual steps, use .step() and print afterwards
-    tm3 = TuringMachine({'a, b'}, {'q0', 'q1'}, 'af.txt', ['b','b','a','a'])
-    tm3.step()
-    tm3.print_turing_machine()
-    # similar to a generator, it will continually step from where it left off
-    tm3.step()
-    tm3.print_turing_machine()
+    # # if it is preferable to see individual steps, use .step() and print afterwards
+    # tm3 = TuringMachine({'a, b'}, {'q0', 'q1'}, 'af.txt', ['b','b','a','a'])
+    # tm3.step()
+    # tm3.print_turing_machine()
+    # # similar to a generator, it will continually step from where it left off
+    # tm3.step()
+    # tm3.print_turing_machine()
