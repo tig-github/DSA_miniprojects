@@ -41,11 +41,9 @@ class TuringMachine:
     # preforms all steps in activation function
     def activate(self):
         print(f"<{self.pointer[0].val}, {self.pointer[1]}>")
-        while self.pointer[1] != 'qrej' and self.pointer[1] != 'qacc':
+        while self.pointer[1] not in {'qacc', 'qrej'}:
             self.step()
             self.print_turing_machine()
-        if self.pointer[1] == 'qacc': print('Turing Machine in accepted state')
-        else: print("Turing Machine in rejected state")
     
     # preforms one step in activation function
     def step(self):
@@ -65,7 +63,9 @@ class TuringMachine:
             if not self.pointer[0].next:
                 self.tape.add_end('*')
             self.pointer[0] = self.pointer[0].next
-            
+
     def print_turing_machine(self):
         self.tape.print_list(chain=' | ', end='...')
         print(f"<{self.pointer[0].val}, {self.pointer[1]}>")
+        if self.pointer[1] == 'qacc': print('Turing Machine in accepted state')
+        elif self.pointer[1] == 'qrej': print("Turing Machine in rejected state")

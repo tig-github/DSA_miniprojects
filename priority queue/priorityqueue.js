@@ -1,13 +1,12 @@
-import 'heap.js';
-import { MinHeap, MaxHeap } from './heap';
+import { MinHeap, MaxHeap } from './heap.js';
 
 export class PriorityQueue {
-    constructor(arr = [], heap = 'min'){
+    constructor(heap = 'min'){
         if (heap === 'min') {
-            this.priority = new MinHeap(arr);
+            this.priority = new MinHeap();
         }
         else if (heap === 'max') {
-            this.priority = new MaxHeap(arr);
+            this.priority = new MaxHeap();
         }
         else {
             console.log('Keyword invalid. Failed to initialize'); // then throw error
@@ -21,7 +20,10 @@ export class PriorityQueue {
     }
 
     dequeue() {
-        return this.priority.heapPop();
+        let last = this.priority.heapPop();
+        let obj = this.pq[last];
+        delete this.pq[last];
+        return obj;
     }
 
 }

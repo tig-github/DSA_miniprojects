@@ -1,0 +1,26 @@
+# Here is a more complicated activation function
+# Uses alphabet (a,b,c,d) and states (q1,q2,q3) in addition to defaults
+
+q0 a (q0, a, R)
+q0 b (q1, b, R)
+q0 c (q2, a, R)
+q0 d (q3, b, R)
+q0 * (qrej, *, L)
+
+q1 a (q1, a, R)
+q1 b (qacc, b, R)
+q1 c (q2, a, L)
+q1 d (q3, b, L)
+q1 * (qrej, *, L)
+
+q2 a (qacc, d, L)
+q2 b (q0, d, L)
+q2 c (q1, d, L)
+q2 d (q2, d, L)
+q2 * (qrej, *, R)
+
+q3 a (qacc, c, R)
+q3 b (q0, c, R)
+q3 c (q1, c, R)
+q3 d (q2, c, R)
+q3 * (qrej, *, L)
