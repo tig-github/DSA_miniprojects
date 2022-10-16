@@ -1,4 +1,4 @@
-# DSA_miniprojects
+# Mini Projects in Data Structures and Algorithms
 
 Small miniprojects for various data structures/algorithms
 Each DSA has a small project associated with it work with implementation and practical use.
@@ -21,7 +21,7 @@ The goal was to start with a simple but interesting miniproject before moving on
 
 LinkedList - Python -> Turing Machine
 
-Priority Queue - Javascript
+Priority Queue - Javascript -> Reading Queue
 
 Red Black Trees - C++
 
