@@ -8,7 +8,7 @@ const maxHeapify = (arr) =>  {
 
 export class MinHeap {
     constructor(arr = []) {
-        this.heap = []
+        this.heap = [];
         if (arr.length !== 0){
             this.heap = minHeapify(arr);
         }
@@ -19,7 +19,7 @@ export class MinHeap {
     }
 
     heapPush(key) {
-        this.heap.push(key)
+        this.heap.push(key);
         let i = this.heap.length-1;
         if (this.heap[Math.floor(i/2)] > key) {
             let temp = this.heap[Math.floor(i/2)];
