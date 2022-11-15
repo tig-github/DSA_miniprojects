@@ -1,4 +1,4 @@
-//import { MinHeap, MaxHeap } from './heap.js';
+import { MinHeap, MaxHeap } from './heap.js';
 Heap = require('heap.js');
 export class PriorityQueue {
     constructor(heap = 'min'){

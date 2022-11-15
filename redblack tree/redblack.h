@@ -43,19 +43,14 @@ public:
     }
 
     // traversals
-    void inorder(V visit) const
-    {
-    }
-    void preorder(V visit) const
-    {
-    }
-    void postorder(V visit) const
-    {
-    }
+    void inorder(Node *root, V visit) const;
+    void preorder(Node *root, V visit) const;
+    void postorder(Node *root, V visit) const;
 
 private:
     void deleteTree(Node *tree);
     RedBlackTree<T> copyTree(RedBlackTree<T> copy);
+    void balanceTree(Node *tree);
 };
 
 template <typename T>
@@ -123,4 +118,29 @@ int RedBlackTree<T>::size() const noexcept
 {
     return sz;
 }
+
+template <typename T>
+void RedBlackTree<T>::inorder(Node *root, V visit) const
+{
+    inorder(root->left, V);
+    V(root);
+    inorder(root->right, V);
+}
+
+template <typename T>
+void RedBlackTree<T>::preorder(Node *root, V visit) const
+{
+    V(root);
+    preorder(root->left);
+    preorder(root->right);
+}
+
+template <typename T>
+void RedBlackTree<T>::postorder(Node *root, V visit) const
+{
+    postorder(root->left);
+    postorder(root->right);
+    V(root);
+}
+
 #endif

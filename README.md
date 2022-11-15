@@ -26,3 +26,4 @@ Priority Queue - Javascript -> Reading Queue
 Red Black Trees - C++
 
 Others using Java, LISP and others
+(something with string compression using huffman coding)

@@ -1,5 +1,4 @@
-// import { PriorityQueue } from './priorityqueue.js';
-PriorityQueue = require('priorityqueue.js');
+import { PriorityQueue } from './priorityqueue.js';
 
 // initializes reading list
 const init = () => {
