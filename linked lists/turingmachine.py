@@ -13,7 +13,7 @@ from linkedlist import LinkedList
 # Activation function taken in by file
 class TuringMachine:
     def __init__(self, alpha : set, state : set, af, input : list):
-        self.alphabet = {'*'}.union(alpha) 
+        #self.alphabet = {'*'}.union(alpha) would be used for nonfile af option 
         self.state = {'acc', 'rej', 'q0'}.union(state)
         self.tape = self.init_tape(input)
         self.pointer = [self.tape.head, 'q0']

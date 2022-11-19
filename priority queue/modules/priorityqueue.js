@@ -1,5 +1,5 @@
 import { MinHeap, MaxHeap } from './heap.js';
-Heap = require('heap.js');
+
 export class PriorityQueue {
     constructor(heap = 'min'){
         if (heap === 'min') {

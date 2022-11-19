@@ -1,7 +1,7 @@
 import { PriorityQueue } from './priorityqueue.js';
 
 // initializes reading list
-const init = () => {
+export const init = () => {
     let readingList = new PriorityQueue();
     console.log('l')
 }
