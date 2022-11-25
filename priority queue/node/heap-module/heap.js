@@ -1,10 +1,12 @@
-// const minHeapify = (arr) =>  {
-//     console.log("not implemented");
-// }
+const minHeapify = (arr) =>  {
+    console.log("not implemented");
+    return arr;
+}
 
-// const maxHeapify = (arr) =>  {
-//     console.log("not implemented");
-// }
+const maxHeapify = (arr) =>  {
+    console.log("not implemented");
+    return arr;
+}
 
 export class MinHeap {
     constructor(arr = []) {
