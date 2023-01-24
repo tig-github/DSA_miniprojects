@@ -21,9 +21,8 @@ The goal was to start with a simple but interesting miniproject before moving on
 
 LinkedList - Python -> Turing Machine
 
+Red Black Trees - C++ -> Expression Tree
+
 Priority Queue - Javascript -> Reading Queue
 
-Red Black Trees - C++
-
-Others using Java, LISP and others
 (something with string compression using huffman coding)

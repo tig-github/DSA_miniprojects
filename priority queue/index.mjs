@@ -1,13 +1,34 @@
 // fetch content from backend
 import { PriorityQueue } from './heap-module/priorityqueue.js';
-
 // no arrow function due to older browser support
-function init(){
-    //const pq = require('./heap-module/priorityqueue.js');
-    let Q = PriorityQueue();
-}
 
-function addBook(){
+
+let Q = pq.PriorityQueue('max');
+
+//window.onload = init();
+
+const addBook = (book = 'newbook', priority = 1) => {
     alert('Book added!');
-    console.log(Q);
+    Q.enqueue(book, priority);
 }
+addButton = document.getElementById('add');
+addButton.addEventListener("click", addBook);
+
+const getBook = () => {
+    alert(Q.top());
+    return Q.top();
+}
+addButton = document.getElementById('get');
+addButton.addEventListener("click", getBook);
+
+const removeBook = () => {
+    Q.dequeue();
+}
+addButton = document.getElementById('remove');
+addButton.addEventListener("click", getBook);
+
+const clearQueue = () => {
+    Q = PriorityQueue('max');
+}
+addButton = document.getElementById('clear');
+addButton.addEventListener("click", getBook);

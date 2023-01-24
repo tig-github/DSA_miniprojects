@@ -22,7 +22,7 @@ import { PriorityQueue } from './heap-module/priorityqueue.js';
 
 let html;
 let css;
-let js;
+// let js;
 
 fs.readFile('../index.html', function (err, data) {
   if (err) {
@@ -36,12 +36,12 @@ fs.readFile('../index.css', function (err, data) {
   }
   css = data;
 });
-fs.readFile('../index.mjs', function (err, data) {
-  if (err) {
-    throw err;
-  }
-  js = data;
-});
+// fs.readFile('../index.mjs', function (err, data) {
+//   if (err) {
+//     throw err;
+//   }
+//   js = data;
+// });
 
 http.createServer((req, res) => {
   res.statusCode = 200;
@@ -51,12 +51,12 @@ if(req.url.indexOf('.css') != -1){
    res.end();
    return;
   }
-if(req.url.indexOf('index.mjs') != -1){
-   res.writeHead(200, {'Content-Type': 'text/javascript'});
-   res.write(js);
-   res.end();
-   return;
-  }
+// if(req.url.indexOf('index.mjs') != -1){
+//    res.writeHead(200, {'Content-Type': 'text/javascript'});
+//    res.write(js);
+//    res.end();
+//    return;
+//   }
 res.writeHeader(200, {"Content-Type": "text/html"});
   res.write(html);
   res.end();

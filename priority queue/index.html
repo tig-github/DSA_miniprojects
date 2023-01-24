@@ -4,12 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./index.js" type="text/jsx"></script>
     <title>DSA MP - Reading List</title>
+
   </head>
-  <body onload="init()">
+  <body>
     <h1>Reading List</h1>
     <p>Simple Reading List in node js built with priority queue</p>
-    <button onClick="addBook()">add book</button>
+    <button id="add">add book to read</button>
+    <button id="get">get book to read</button>
+    <button id="remove">remove latest read book</button>
+    <button id="clear">clear reading list</button>
+    <script type="module" src="./index.mjs"></script>
   </body>
+  
 </html>

@@ -26,4 +26,8 @@ export class PriorityQueue {
         return obj;
     }
 
+    top() {
+        return this.pq[this.priority.peek()];
+    }
+
 }
