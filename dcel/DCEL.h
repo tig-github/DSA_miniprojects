@@ -2,7 +2,7 @@
 #define DCEL
 
 #include <utility>
-
+#include "GeometricPrimitives.h"
 
 template <typename numberType>
 class DoublyConnectedEdgeList {
@@ -41,10 +41,14 @@ class DoublyConnectedEdgeList {
 
         static DoublyConnectedEdgeList<numberType> computeOverlay(DoublyConnectedEdgeList<numberType> DCEL1,
                                                                   DoublyConnectedEdgeList<numberType> DCEL2);
+        static DoublyConnectedEdgeList<numberType> triangulate(DoublyConnectedEdgeList<numberType> DCEL);
 
         void printFaces();
         void printHalfEdges();
         void printVertices();
+
+        private:
+        static DoublyConnectedEdgeList<numberType> makeMonotone(DoublyConnectedEdgeList<numberType> DCEL);
 
 };
 
