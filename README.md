@@ -17,12 +17,20 @@ printing the reverse of the contents, and significant operator overloading.
 
 The goal was to start with a simple but interesting miniproject before moving onto more unfamiliar places.
 
+### Computational Geometry
+
+I don't have a specific goal in mind yet, but I want to implement a DCEL and some computational geometry algorithms
+to get more practical experience in this realm of coding. I figured C++ would be a solid choice for this. Some algorithms will require some other data structures like balanced binary trees, heaps, stacks, etc - all of these
+will naturally be self implemented.
+
 ## Todo:
 
 LinkedList - Python -> Turing Machine
 
+Doubly Connected Edge List - C++
+
 Red Black Trees - C++ -> Expression Tree
 
-Priority Queue - Javascript -> Reading Queue
+Priority Queue - Javascript -> Reading Queue (Currently abandoned)
 
 (something with string compression using huffman coding)
