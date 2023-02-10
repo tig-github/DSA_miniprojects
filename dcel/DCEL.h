@@ -4,7 +4,6 @@
 #include <utility>
 #include <vector>
 #include "GeometricPrimitives.h"
-#include "redblack.h"
 
 template <typename numberType>
 class DoublyConnectedEdgeList {

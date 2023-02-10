@@ -1,14 +1,15 @@
 #ifdef GeometricPrimitives
 #define GeometricPrimitives
 
+#define MAX_INT 2147483647
 
 template <typename num>
 struct Line { // Ax + By = C
     num A;
     num B;
     num C;
-    std::pair<num, num> upperEndpoint = NULL; // if uninitialized, line is not a segment
-    std::pair<num, num> lowerEndpoint = NULL;
+    std::pair<num, num> upperEndpoint = MAX_INT; // if uninitialized, line is not a segment
+    std::pair<num, num> lowerEndpoint = MAX_INT;
 };
 
 
@@ -36,7 +37,7 @@ Line<num> generateLine(num x1, num x2, num y1, num y2, bool isSegment = true){
         newLine = {A, B, C, std::pair<x1,y1>, std::pair<x2,y2>};
     }
     else {
-        newLine = {A, B, C, NULL, NULL}
+        newLine = {A, B, C, MAX_INT, MAX_INT}
     }
     return newLine;
 }
