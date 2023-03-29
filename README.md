@@ -27,10 +27,8 @@ will naturally be self implemented.
 
 LinkedList - Python -> Turing Machine
 
+Persistent Red Black Trees - C++ -> Point Location
+
 Doubly Connected Edge List - C++
 
-Red Black Trees - C++ -> Expression Tree
-
 Priority Queue - Javascript -> Reading Queue (Currently abandoned)
-
-(something with string compression using huffman coding)
