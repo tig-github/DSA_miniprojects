@@ -59,6 +59,8 @@ class DoublyConnectedEdgeList {
         static DoublyConnectedEdgeList<numberType> computeOverlay(DoublyConnectedEdgeList<numberType> DCEL1,
                                                                   DoublyConnectedEdgeList<numberType> DCEL2);
         static DoublyConnectedEdgeList<numberType> triangulate(DoublyConnectedEdgeList<numberType> DCEL);
+        static DoublyConnectedEdgeList<numberType> computeVoronoiDiagram(DoublyConnectedEdgeList<numberType> DCEL); // considers all vertex records as sites
+        static DoublyConnectedEdgeList<numberType> computeVoronoiDiagram(std::vector<numberType> sites);
 
         void printFaces();
         void printHalfEdges();
@@ -81,6 +83,7 @@ template typename<T>
 DoublyConnectedEdgeList<numberType>::DoublyConnectedEdgeList(DoublyConnectedEdgeList<numberType>& DCEL){
 
 }
+
 
 
 #endif

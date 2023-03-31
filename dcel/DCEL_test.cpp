@@ -1,14 +1,13 @@
 #include <utility>
 #include <vector>
 #include <iostream>
-#include "DCEL.h"
 #include "GeometricPrimitives.h"
-
 
 
 // compilation
 void testMain(){
     std::cout << "Hello World :)" << std::endl;
+    boo();
 }
 
 // simple tests on primitives

@@ -3,6 +3,7 @@
 
 #define MAX_INT 2147483647
 
+void boo(){}
 template <typename num>
 struct Line { // Ax + By = C
     num A;

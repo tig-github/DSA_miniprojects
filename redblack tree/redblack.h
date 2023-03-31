@@ -1,6 +1,7 @@
+// Persistent Implementation of RedBlack Tree
+// limited path copying using fat node method
 #ifndef REDBLACK
 #define REDBLACK
-
 #include <functional>
 
 template <typename T>
@@ -56,7 +57,7 @@ private:
 template <typename T>
 RedBlackTree<T>::RedBlackTree()
 {
-    root = new Node{null, null, null};
+    root = new Node{nullptr, nullptr, nullptr};
     sz = 0;
 }
 
@@ -68,7 +69,7 @@ RedBlackTree<T>::RedBlackTree(const RedBlackTree<T> &tree)
 }
 
 template <typename T>
-RedBlackTree<T>::~RedBlackTree()
+RedBlackTree<T>::~RedBlackTree() noexcept
 {
     deleteTree(root);
 }
@@ -83,6 +84,9 @@ RedBlackTree<T>::RedBlackTree(RedBlackTree<T> &&tree) noexcept
 template <typename T>
 void RedBlackTree<T>::deleteTree(Node *tree)
 {
+    if (tree == nullptr){
+        return;
+    }
     deleteTree(tree->left);
     deleteTree(tree->right);
     delete tree;
@@ -91,7 +95,7 @@ void RedBlackTree<T>::deleteTree(Node *tree)
 template <typename T>
 RedBlackTree<T> RedBlackTree<T>::copyTree(RedBlackTree<T> copy)
 {
-    Node *origin = new Node *{null, null, null};
+    Node *origin = new Node *{nullptr, nullptr, nullptr};
     origin->left = copyTree(copy.head->left);
     origin->right = copyTree(copy.head->right);
     return origin;
@@ -122,25 +126,34 @@ int RedBlackTree<T>::size() const noexcept
 template <typename T>
 void RedBlackTree<T>::inorder(Node *root, V visit) const
 {
-    inorder(root->left, V);
-    V(root);
-    inorder(root->right, V);
+    if (root == nullptr){
+        return;
+    }
+    inorder(root->left, visit);
+    visit(root->data);
+    inorder(root->right, visit);
 }
 
 template <typename T>
 void RedBlackTree<T>::preorder(Node *root, V visit) const
 {
-    V(root);
-    preorder(root->left);
-    preorder(root->right);
+    if (root == nullptr){
+        return;
+    }
+    visit(root->data);
+    preorder(root->left, visit);
+    preorder(root->right, visit);
 }
 
 template <typename T>
 void RedBlackTree<T>::postorder(Node *root, V visit) const
 {
-    postorder(root->left);
-    postorder(root->right);
-    V(root);
+    if (root == nullptr){
+        return;
+    }
+    postorder(root->left, visit);
+    postorder(root->right, visit);
+    visit(root->data);
 }
 
 #endif
