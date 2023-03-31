@@ -13,6 +13,9 @@ public:
         T data;
         Node *left;
         Node *right;
+        Node *fat; //fat node approach, note that k=1 is sufficient to achieve good complexity
+        int color; // red = 1, black = 0
+        int height;
     };
 
 public:
@@ -27,7 +30,7 @@ public:
     RedBlackTree<T> operator=(const RedBlackTree<T> &tree);
     RedBlackTree<T> operator=(const RedBlackTree<T> &&tree) noexcept;
     int size() const noexcept;
-    void add(const T value)
+    void insert(const T value)
     {
     }
     void remove(const T value)
@@ -51,13 +54,16 @@ public:
 private:
     void deleteTree(Node *tree);
     RedBlackTree<T> copyTree(RedBlackTree<T> copy);
-    void balanceTree(Node *tree);
+    void balanceTree(Node *tree); //handles RB tree rotations
+    void pathCopy(Node *tree); //handles limited path copying
 };
 
+
+// implementations
 template <typename T>
 RedBlackTree<T>::RedBlackTree()
 {
-    root = new Node{nullptr, nullptr, nullptr};
+    root = new Node{nullptr, nullptr, nullptr, nullptr, 0, 0};
     sz = 0;
 }
 
@@ -95,9 +101,12 @@ void RedBlackTree<T>::deleteTree(Node *tree)
 template <typename T>
 RedBlackTree<T> RedBlackTree<T>::copyTree(RedBlackTree<T> copy)
 {
-    Node *origin = new Node *{nullptr, nullptr, nullptr};
-    origin->left = copyTree(copy.head->left);
-    origin->right = copyTree(copy.head->right);
+    if (copy.head == nullptr){
+        return nullptr;
+    }
+    Node *origin = new Node *{copy.root->data, nullptr, nullptr, nullptr, copy.head->color, 0};
+    origin->left = copyTree(copy.root->left);
+    origin->right = copyTree(copy.root->right);
     return origin;
 }
 
@@ -112,7 +121,7 @@ RedBlackTree<T> RedBlackTree<T>::operator=(const RedBlackTree<T> &tree)
 template <typename T>
 RedBlackTree<T> RedBlackTree<T>::operator=(const RedBlackTree<T> &&tree) noexcept
 {
-    root = std::move(tree.node);
+    root = std::move(tree.root);
     sz = tree.sz;
     return *this;
 }
