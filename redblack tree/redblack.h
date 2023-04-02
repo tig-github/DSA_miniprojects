@@ -2,7 +2,9 @@
 // limited path copying using fat node method
 #ifndef REDBLACK
 #define REDBLACK
+
 #include <functional>
+#include <iostream>
 
 template <typename T>
 class RedBlackTree
@@ -30,15 +32,9 @@ public:
     RedBlackTree<T> operator=(const RedBlackTree<T> &tree);
     RedBlackTree<T> operator=(const RedBlackTree<T> &&tree) noexcept;
     int size() const noexcept;
-    void insert(const T value)
-    {
-    }
-    void remove(const T value)
-    {
-    }
-    Node *search(const T value)
-    {
-    }
+    void insert(Node* node, const T value);
+    void remove(Node* node, const T value);
+    T search(Node* node, const T value);
     bool contains(const T value) const
     {
     }
@@ -50,6 +46,7 @@ public:
     void inorder(Node *root, V visit) const;
     void preorder(Node *root, V visit) const;
     void postorder(Node *root, V visit) const;
+    void printTree(Node* root) const;
 
 private:
     void deleteTree(Node *tree);
@@ -63,7 +60,7 @@ private:
 template <typename T>
 RedBlackTree<T>::RedBlackTree()
 {
-    root = new Node{nullptr, nullptr, nullptr, nullptr, 0, 0};
+    root = nullptr;
     sz = 0;
 }
 
@@ -133,6 +130,53 @@ int RedBlackTree<T>::size() const noexcept
 }
 
 template <typename T>
+void RedBlackTree<T>::insert(Node* node, const T value)
+{
+    if (node == nullptr)
+    {
+        root = new Node{value, nullptr, nullptr, nullptr, 0, 0};
+        return;
+    }
+    if (node->data > value)
+    {
+        if (node->left != nullptr){
+            insert(node->left, value);
+        }
+        else{
+            node->left = new Node{value, nullptr, nullptr, nullptr, 0, 0};
+        }
+    }
+    else {
+        if (node->right != nullptr){
+            insert(node->right, value);
+        }
+        else{
+            node->right = new Node{value, nullptr, nullptr, nullptr, 0, 0};
+        }
+    }
+}
+
+template <typename T>
+void RedBlackTree<T>::remove(Node* node, const T value)
+{
+}
+
+template <typename T>
+T RedBlackTree<T>::search(Node* node, const T value)
+{
+    if (node->data == value || (node->left == nullptr && node->right == nullptr)){
+        return node->data;
+    }
+    else if (node->data > value){
+        return search(node->left, value);
+    }
+    else {
+        return search(node->right, value);
+    }
+}
+
+
+template <typename T>
 void RedBlackTree<T>::inorder(Node *root, V visit) const
 {
     if (root == nullptr){
@@ -163,6 +207,16 @@ void RedBlackTree<T>::postorder(Node *root, V visit) const
     postorder(root->left, visit);
     postorder(root->right, visit);
     visit(root->data);
+}
+
+template <typename T>
+void RedBlackTree<T>::printTree(Node* node) const{
+    if (node != nullptr){
+        std::cout << node->data << " | ";
+        printTree(node->left);
+        printTree(node->right);
+    }
+
 }
 
 #endif

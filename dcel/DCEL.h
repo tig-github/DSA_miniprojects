@@ -32,6 +32,7 @@ class DoublyConnectedEdgeList {
             T Data;
         };
 
+        // currently as vectors, lexicographically ordered balanced binary trees would be better
         std::vector<Vertex*> VertexRecord;
         std::vector<Face*> FaceRecord;
         std::vector<HalfEdge*> HalfEdgeRecord;
@@ -46,7 +47,6 @@ class DoublyConnectedEdgeList {
         int numFaces();
         int numVertices();
         int numHalfEdges();
-        int numEdges();
 
         void addFace();
         void addVertex();
@@ -59,7 +59,6 @@ class DoublyConnectedEdgeList {
         static DoublyConnectedEdgeList<numberType> computeOverlay(DoublyConnectedEdgeList<numberType> DCEL1,
                                                                   DoublyConnectedEdgeList<numberType> DCEL2);
         static DoublyConnectedEdgeList<numberType> triangulate(DoublyConnectedEdgeList<numberType> DCEL);
-        static DoublyConnectedEdgeList<numberType> computeVoronoiDiagram(DoublyConnectedEdgeList<numberType> DCEL); // considers all vertex records as sites
         static DoublyConnectedEdgeList<numberType> computeVoronoiDiagram(std::vector<numberType> sites);
 
         void printFaces();
@@ -68,6 +67,8 @@ class DoublyConnectedEdgeList {
 
         private:
         // geometric privates
+        static DoublyConnectedEdgeList<numberType> computerIntersections(DoublyConnectedEdgeList<numberType> DCEL1,
+                                                                         DoublyConnectedEdgeList<numberType> DCEL2);
         static DoublyConnectedEdgeList<numberType> makeMonotone(DoublyConnectedEdgeList<numberType> DCEL);
         // helper functions
 };
