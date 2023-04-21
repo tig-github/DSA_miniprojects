@@ -5,6 +5,7 @@
 
 #include <functional>
 #include <iostream>
+#include <algorithm>
 
 template <typename T>
 class RedBlackTree
@@ -32,15 +33,11 @@ public:
     RedBlackTree<T> operator=(const RedBlackTree<T> &tree);
     RedBlackTree<T> operator=(const RedBlackTree<T> &&tree) noexcept;
     int size() const noexcept;
-    void insert(Node* node, const T value);
+    void insert(Node* node, const T value, int h = 1);
     void remove(Node* node, const T value);
     T search(Node* node, const T value);
-    bool contains(const T value) const
-    {
-    }
-    int height() const noexcept
-    {
-    }
+    bool contains(Node* node, const T value) const;
+    int height(Node* node) const;
 
     // traversals
     void inorder(Node *root, V visit) const;
@@ -130,7 +127,30 @@ int RedBlackTree<T>::size() const noexcept
 }
 
 template <typename T>
-void RedBlackTree<T>::insert(Node* node, const T value)
+bool RedBlackTree<T>::contains(Node* node, const T value) const {
+    if (node == nullptr){
+        return false;
+    }
+    else if (node->data == value) {
+        return true;
+    }
+    return contains(node->left, value) || contains(node->right, value);
+}
+
+template <typename T>
+int RedBlackTree<T>::height(Node* node) const {
+    if (node == nullptr) {
+        return 0;
+    }
+    if (node->left == nullptr && node->right == nullptr){
+        return node->height;
+    }
+    return std::max(height(node->left), height(node->right));
+}
+
+
+template <typename T>
+void RedBlackTree<T>::insert(Node* node, const T value, int h)
 {
     if (node == nullptr)
     {
@@ -140,22 +160,24 @@ void RedBlackTree<T>::insert(Node* node, const T value)
     if (node->data > value)
     {
         if (node->left != nullptr){
-            insert(node->left, value);
+            insert(node->left, value, h+1);
         }
         else{
-            node->left = new Node{value, nullptr, nullptr, nullptr, 0, 0};
+            node->left = new Node{value, nullptr, nullptr, nullptr, 0, h};
         }
     }
-    else {
+    if (node->data < value)
+    {
         if (node->right != nullptr){
-            insert(node->right, value);
+            insert(node->right, value, h+1);
         }
         else{
-            node->right = new Node{value, nullptr, nullptr, nullptr, 0, 0};
+            node->right = new Node{value, nullptr, nullptr, nullptr, 0, h};
         }
     }
 }
 
+// persistent so nothing is removed, just requires fat-node path copying to replace with newer and save older
 template <typename T>
 void RedBlackTree<T>::remove(Node* node, const T value)
 {
