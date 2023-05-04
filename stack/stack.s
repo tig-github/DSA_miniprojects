@@ -16,12 +16,14 @@ label: .asciiz "testlabel\n"
 # tag is of form:           [ SIZE (4 bytes) | NUM_ELEMENTS (4 bytes) ] 
 init:  addi sp, sp, -4
        sw ra, 0(sp)
+       
        slli a1, a0, 2 # memory alignment
        addi a1, a1, 8 #store an extra cell, as first is the tag
        li a0, 9
        ecall
        sw a1, 0(a0)
        sw x0, 4(a0)
+
        lw ra, 0(sp)
        addi sp, sp, 4
        jr ra 
@@ -30,11 +32,21 @@ init:  addi sp, sp, -4
 # a0 holds pointer to stack
 # a1 holds item
 # checks if item is valid to push to stack
-# returns error if stack is full (for now, later stack will be dynamic)
+# returns -1 if stack is full (for now, later stack will be dynamic), else 1
 push: addi sp, sp, -4
        sw ra, 0(sp)
 
+       lw s0, 0(a0)
+       lw s1, 4(a0)
+       bge s1, s0, isFull
 
+       # implicit isNotFull
+       li a0, 1
+       j epilogue
+       isFull:
+       li a0, -1
+
+       epilogue:
        lw ra, 0(sp)
        addi sp, sp, 4
        jr ra 
@@ -42,6 +54,7 @@ push: addi sp, sp, -4
 
 # a0 holds pointer to stack
 # pops element at top of stack, returns it
+# when stack is empty, returns -1
 pop: addi sp, sp, -4
        sw ra, 0(sp)
 
